@@ -11,6 +11,40 @@ def listTo2D(list):
 def filePicking():
     return input("Please enter a filename: ")
 
+def advancePrint(cells, row, col):
+    twoDList = listTo2D(cells)
+    for i in range(len(twoDList)):
+        if (i % 3 == 0):
+            print("\u253c", end='')
+            for j in range(3):
+                print("\t\u2500\t\u2500\t\u2500\t\u253c", end='')
+            print("")
+        for j in range(len(twoDList[i])):
+            if (j % 3 == 0):
+                print("\u2502\t", end='')
+            if (twoDList[i][j] == 0 and row == i and col == j):
+                  print("\u25aa\t", end='')
+            elif (twoDList[i][j] == 0):
+                print("\u2800\t", end='')
+            elif (row == i and col == j):
+                c = '\u2080'
+                for k in range(twoDList[i][j]):
+                   c = chr(ord(c)+1)
+                print(c, end='')
+                print("\t", end='')
+            else:        
+                print(str(twoDList[i][j])+"\t", end='')
+        print("\u2502")
+    print("\u253c")
+    for j in range(3):
+        print("\t\u2500\t\u2500\t\u2500\t\u253c", end='')
+    print("")    
+
+
+
+
+
+
 def simplePrint(list):
     twoDList = listTo2D(list)
     for row in range(9):
@@ -49,6 +83,10 @@ if (loadCells(cells, filePicking()) == False):
 #backup the originalCells
 originalCells= copy.deepcopy(cells)
 simplePrint(cells)
+row = 0
+col = 0
+advancePrint(cells, row, col)
+
 
 
 
