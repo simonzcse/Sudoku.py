@@ -1,6 +1,22 @@
+import copy
+
+def listTo2D(list):
+    twoDimensionList = [[0 for row in range(9)] for col in range(9)]
+    for i in range(len(list)):
+        for j in range(len(list[i])):
+            for k in range(len(list[i][j])):
+                twoDimensionList[i //len(list[i]) * len(list[i][j]) + j][i % len(list[i]) * len(list[i][j]) + k] = list[i][j][k]
+    return twoDimensionList
+
 def filePicking():
     return input("Please enter a filename: ")
 
+def simplePrint(list):
+    twoDList = listTo2D(list)
+    for row in range(9):
+        for col in range(9):
+            print(' ' if twoDList[row][col] == 0 else chr(twoDList[row][col] + ord('0')), end = '')
+        print("")    
 
 def loadCells(cells, filename):
     try:
@@ -25,8 +41,14 @@ def loadCells(cells, filename):
 cells= [[ [0 for col in range(3)] for col in range(3)] for row in range(9)]
 if (loadCells(cells, filePicking()) == False):
     print("The file is not loaded successfully. You may want to check your filePicking method " +
-                                "or see if the file is really placed properly in your project directory.\n")
+                                "or see if the file is really placed properly in your project directory.")
     cells[0] = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     cells[4] = [[1, 0, 3], [4, 5, 6], [0, 8, 9]]
     cells[8] = [[4, 0, 3], [1, 5, 6], [0, 8, 2]]
-originalCells= [[ [0 for col in range(3)] for col in range(3)] for row in range(9)]                              
+
+#backup the originalCells
+originalCells= copy.deepcopy(cells)
+simplePrint(cells)
+
+
+
