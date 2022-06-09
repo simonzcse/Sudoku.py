@@ -1,2 +1,2 @@
 # Sudoku.py
-Using Pytjon to implement https://github.com/simonzcse/Sudoku
+Using Python to implement https://github.com/simonzcse/Sudoku
