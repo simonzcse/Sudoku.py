@@ -11,8 +11,8 @@ def listTo2D(list):
 
 def checkBoxLogic(cellsOfBox):
     count = [0 for i in range(10)]
-    for i in range(cellsOfBox):
-        for j in range(cellsOfBox[i]):
+    for i in range(len(cellsOfBox)):
+        for j in range(len(cellsOfBox[i])):
             match cellsOfBox[i][j]:
                 case 1:
                     count[1]+=1
@@ -67,8 +67,6 @@ def checkLineLogic(cellsOfLine):
         if (count[i] >1):
             return False
     return True     
-
-
 
 def isValid(cells):
     twoDList = listTo2D(cells)
@@ -144,7 +142,7 @@ def advancePrint(cells, row, col):
 
 def mark(row, col, cells, s):
     try:
-        cells[(row // 3 * 3) + col //3][row % 3][col % 3] = ord(s)
+        cells[(row // 3 * 3) + col //3][row % 3][col % 3] = int(s)
     except:
         return    
 
@@ -197,9 +195,8 @@ simplePrint(cells)
 row = 0
 col = 0
 advancePrint(cells, row, col)
-command = '0'
+command = input()
 while True:
-    command==input("")
     match command: #Match case is available since Python 3.10, like switch case in java:) 
         case 'a': col = (col + 8) % 9
         case 's': row = (row + 1) % 9
@@ -216,9 +213,10 @@ while True:
         case 'q': exit()
         case 'h': printHelpMenu()           
         case _:
-            if (command >= ord('0') and command <= ord('9')): 
-                mark(row, col, cells, s)
+            if (ord(command) >= ord('0') and ord(command) <= ord('9')): 
+                mark(row, col, cells, command)
     advancePrint(cells, row, col)
     if (checkWin(cells) and same(cells, originalCells)):
         print("Yeah! you have solved the puzzle!")
         exit()
+    command = input()    
