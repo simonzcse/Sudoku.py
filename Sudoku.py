@@ -42,9 +42,6 @@ def advancePrint(cells, row, col):
 
 
 
-
-
-
 def simplePrint(list):
     twoDList = listTo2D(list)
     for row in range(9):
@@ -86,6 +83,28 @@ simplePrint(cells)
 row = 0
 col = 0
 advancePrint(cells, row, col)
+command = '0'
+while True:
+    command==input("")
+    match command: #Match case is available since Python 3.10, like switch case in java:) 
+        case 'a': col = (col + 8) % 9
+        case 's': row = (row + 1) % 9
+        case 'w': row = (row + 8) % 9
+        case 'd': col = (col + 1) % 9
+        #case '.': mark(row, col, cells, '0')
+        case 'c':
+            if (isValid(cells) == False):
+                print("The puzzle is invalid!")
+            elif (same(cells, originalCells) == False):
+                print("This is not the same as the original")
+            else:
+                print("So far so good!")
+        case 'q': quit()
+        case 'h': printHelpMenu()           
+        case _:
+            if (command >= ord('0') and command <= ord('9')): 
+                mark(row, col, cells, s)
+
 
 
 
