@@ -8,6 +8,17 @@ def listTo2D(list):
                 twoDimensionList[i //len(list[i]) * len(list[i][j]) + j][i % len(list[i]) * len(list[i][j]) + k] = list[i][j][k]
     return twoDimensionList
 
+def checkWin(cells):
+    if (isValid(cells) == False):
+        return False
+    else:
+        for i in range(len(cells)):
+            for j in range(len(cells[i])):
+                for k in range(len(cells[i][j])):
+                    if (cells[i][j][k] == 0):
+                        return False
+        return True    
+
 def filePicking():
     return input("Please enter a filename: ")
 
