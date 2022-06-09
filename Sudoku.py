@@ -59,7 +59,19 @@ def advancePrint(cells, row, col):
         print("\t\u2500\t\u2500\t\u2500\t\u253c", end='')
     print("")    
 
+def mark(row, col, cells, s):
+    try:
+        cells[(row // 3 * 3) + col //3][row % 3][col % 3] = ord(s)
+    except:
+        return    
 
+def same(cells, originals):
+    for i in range(len(cells)):
+        for j in range(len(cells[i])):
+            for k in range(len(cells[i][j])):
+                if (originals[i][j][k] != 0 and originals[i][j][k] != cells[i][j][k]):
+                    return False
+    return True                
 
 def simplePrint(list):
     twoDList = listTo2D(list)
@@ -85,9 +97,9 @@ def loadCells(cells, filename):
         print("Error in reading file :")
         return False
     else:
-        return True               
+        return True 
 
-
+#main
 cells= [[ [0 for col in range(3)] for col in range(3)] for row in range(9)]
 if (loadCells(cells, filePicking()) == False):
     print("The file is not loaded successfully. You may want to check your filePicking method " +
