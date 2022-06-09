@@ -9,6 +9,67 @@ def listTo2D(list):
                 twoDimensionList[i //len(list[i]) * len(list[i][j]) + j][i % len(list[i]) * len(list[i][j]) + k] = list[i][j][k]
     return twoDimensionList
 
+def checkBoxLogic(cellsOfBox):
+    count = [0 for i in range(10)]
+    for i in range(cellsOfBox):
+        for j in range(cellsOfBox[i]):
+            match cellsOfBox[i][j]:
+                case 1:
+                    count[1]+=1
+                case 2:
+                    count[2]+=1
+                case 3:
+                    count[3]+=1
+                case 4:
+                    count[4]+=1
+                case 5:
+                    count[5]+=1
+                case 6:
+                    count[6]+=1
+                case 7:
+                    count[7]+=1
+                case 8:
+                    count[8]+=1
+                case 9:
+                    count[9]+=1
+                case 0:
+                    count[0]+=1
+    for i in range(1, len(count)):
+        if (count[i] >1):
+            return False
+    return True 
+
+def checkLineLogic(cellsOfLine):
+    count = [0 for i in range(10)]
+    for i in cellsOfLine:
+        match i:
+            case 1:
+                count[1]+=1
+            case 2:
+                count[2]+=1
+            case 3:
+                count[3]+=1
+            case 4:
+                count[4]+=1
+            case 5:
+                count[5]+=1
+            case 6:
+                count[6]+=1
+            case 7:
+                count[7]+=1
+            case 8:
+                count[8]+=1
+            case 9:
+                count[9]+=1
+            case 0:
+                count[0]+=1
+    for i in range(1, len(count)):
+        if (count[i] >1):
+            return False
+    return True     
+
+
+
 def isValid(cells):
     twoDList = listTo2D(cells)
     for ints in twoDList:
