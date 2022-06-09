@@ -1,4 +1,5 @@
 import copy
+import re
 
 def listTo2D(list):
     twoDimensionList = [[0 for row in range(9)] for col in range(9)]
@@ -7,6 +8,16 @@ def listTo2D(list):
             for k in range(len(list[i][j])):
                 twoDimensionList[i //len(list[i]) * len(list[i][j]) + j][i % len(list[i]) * len(list[i][j]) + k] = list[i][j][k]
     return twoDimensionList
+
+def isValid(cells):
+    twoDList = listTo2D(cells)
+    for ints in twoDList:
+        if (checkLineLogic(ints) == False):
+            return False
+    for sudoku in cells:
+        if (checkBoxLogic(sudoku) == False):
+            return False
+    return True
 
 def checkWin(cells):
     if (isValid(cells) == False):
@@ -150,9 +161,3 @@ while True:
     if (checkWin(cells) and same(cells, originalCells)):
         print("Yeah! you have solved the puzzle!")
         exit()
-
-
-
-
-
-
