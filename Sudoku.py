@@ -11,6 +11,25 @@ def listTo2D(list):
 def filePicking():
     return input("Please enter a filename: ")
 
+def printHelpMenu():
+    print("Help Menu:")
+    print("------------------")
+    print("q\t\tQuit the program")
+    print("------------------")
+    print("w\t\tMove to upper cell")
+    print("------------------")
+    print("a\t\tMove to left cell")
+    print("------------------")
+    print("s\t\tMove to lower cell")
+    print("------------------")
+    print("d\t\tMove to Right cell")
+    print("------------------")
+    print("c\t\tGet hits")
+    print("------------------")
+    print(".\t\tClean current cell")
+    print("------------------")
+    print("1-9\tInput number into cell")    
+
 def advancePrint(cells, row, col):
     twoDList = listTo2D(cells)
     for i in range(len(twoDList)):
@@ -91,7 +110,7 @@ while True:
         case 's': row = (row + 1) % 9
         case 'w': row = (row + 8) % 9
         case 'd': col = (col + 1) % 9
-        #case '.': mark(row, col, cells, '0')
+        case '.': mark(row, col, cells, '0')
         case 'c':
             if (isValid(cells) == False):
                 print("The puzzle is invalid!")
@@ -99,11 +118,16 @@ while True:
                 print("This is not the same as the original")
             else:
                 print("So far so good!")
-        case 'q': quit()
+        case 'q': exit()
         case 'h': printHelpMenu()           
         case _:
             if (command >= ord('0') and command <= ord('9')): 
                 mark(row, col, cells, s)
+    advancePrint(cells, row, col)
+    if (checkWin(cells) and same(cells, originalCells)):
+        print("Yeah! you have solved the puzzle!")
+        exit()
+
 
 
 
