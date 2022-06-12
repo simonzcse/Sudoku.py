@@ -1,6 +1,6 @@
 import copy
 
-# /**
+# 
 #      * Convert a 3D array to a 9x9 array that is more ready to be printed or to be validated.
 #      *
 #      * @param array Should be a 3D array where each of the array[i] should be a 3x3 array box.
@@ -10,7 +10,7 @@ import copy
 #      *              bottom-left [6], bottom-middle [7], bottom-right [8]
 #      * @return Returns a 9x9 int array that contains the digits inside the sudoku board. Each of the array[i]
 #      *              should contains the number on i-th row, scanned from left to right.
-#      */
+# 
 
 def listTo2D(list):
     twoDimensionList = [[0 for row in range(9)] for col in range(9)]
